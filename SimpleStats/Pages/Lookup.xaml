@@ -1,0 +1,89 @@
+﻿<Page x:Class="SimpleStats.Pages.Lookup"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SimpleStats.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="600"
+      Title="Lookup" Style="{Binding /Themes/ExpressionDark.xaml, RelativeSource={RelativeSource PreviousData}}">
+
+    <Grid Margin="0,0,0,0">
+        <StatusBar BorderThickness="0,1,0,0" BorderBrush="Black" Height="25" VerticalAlignment="Bottom" Foreground="White" Background="{x:Null}">
+            <TextBlock x:Name="textBlockState" TextWrapping="Wrap" Text="State:" FontWeight="Bold" Foreground="#FFFDFDFD"/>
+            <TextBlock x:Name="txtLookupStatus" TextWrapping="Wrap" Text="waiting on user.." FontWeight="ExtraLight" Foreground="#FFFDFDFD"/>
+        </StatusBar>
+        <TextBlock Grid.Row="0" x:Name="txtTitle" HorizontalAlignment="Left" Margin="5,5,0,0" TextWrapping="Wrap" Text="Lookup Player" VerticalAlignment="Top" FontSize="21.333" FontWeight="Bold" Height="28" Foreground="Black" Width="143"/>
+        <Grid Grid.Row="0" Margin="20,40,20,25" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True">
+            <TextBox x:Name="txtPlayersName" TextWrapping="Wrap" Margin="15,10,80,0" Height="40" VerticalAlignment="Top" MaxLines="1" FontFamily="Segoe UI Historic" FontSize="26.667"/>
+            <Button x:Name="btnSearch" Content="Search" HorizontalAlignment="Right" Width="60" Height="40" VerticalAlignment="Top" Click="btnSearch_Click" Margin="0,10,15,0"/>
+            <Grid x:Name="resultsGrid" Margin="20,60,20,15">
+                <Separator Height="4" Margin="10,28,0,0" VerticalAlignment="Top">
+                    <Separator.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="Black" Offset="0"/>
+                            <GradientStop Color="#FF042CE2" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Separator.Background>
+                </Separator>
+                <TabControl x:Name="tabControl"  Margin="0,37,0,0" TabStripPlacement="Bottom" Foreground="#FF000000" Background="Silver">
+                    <TabItem Header="Summary">
+                        <Grid Height="351" Width="511">
+
+                            <TextBlock x:Name="txtWins" HorizontalAlignment="Left" Margin="178,10,0,0"  VerticalAlignment="Top" Height="15" Width="39" Text="Wins:" TextAlignment="Right" Foreground="Black"/>
+                            <TextBlock x:Name="txtLosses" HorizontalAlignment="Left" Margin="178,25,0,0"  VerticalAlignment="Top" Height="15" Width="39" Text="Losses:" TextAlignment="Right" Foreground="Black"/>
+                            <TextBlock x:Name="txtWinPerc" HorizontalAlignment="Left" Margin="178,40,0,0"  VerticalAlignment="Top" Height="15" Width="39" Text="Win %:" TextAlignment="Right" Foreground="Black"/>
+                            <TextBlock x:Name="txtKda" HorizontalAlignment="Left" Margin="178,55,0,0" VerticalAlignment="Top" Height="14" Width="39" Text="Kda:" TextAlignment="Right" Foreground="Black"/>
+
+                            <TextBlock x:Name="txtWinsRes" Margin="222,10,26,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Height="15" Foreground="Black"/>
+                            <TextBlock x:Name="txtLossesRes" Margin="222,25,26,0" Text="0" VerticalAlignment="Top" Height="15" TextTrimming="CharacterEllipsis" Foreground="Black"/>
+                            <TextBlock x:Name="txtWinPercRes" Margin="222,40,26,0" Text="0" VerticalAlignment="Top" Height="15" TextTrimming="CharacterEllipsis" Foreground="Black"/>
+                            <TextBlock x:Name="txtKdaRes" Margin="222,55,10,0" Text="0" VerticalAlignment="Top" Height="15" TextTrimming="CharacterEllipsis" Foreground="Black"/>
+
+                            <Image x:Name="imgLeague" Source="https://upload.wikimedia.org/wikipedia/commons/4/44/Question_mark_(black_on_white).png" Width="107" Height="96" Stretch="Fill" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="170,80,0,0"/>
+                            <Image x:Name="imgChampion" Source="https://upload.wikimedia.org/wikipedia/commons/4/44/Question_mark_(black_on_white).png" Width="160" Height="166" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Stretch="Fill"/>
+                            <Canvas HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100"/>
+
+                        </Grid>
+                    </TabItem>
+                    <TabItem x:Name="tabPerformance" Header="Performance">
+                        <Grid>
+                            <StackPanel ScrollViewer.CanContentScroll="True" CanVerticallyScroll="True">
+                                <TextBlock x:Name="txtLeagueInfo1" TextWrapping="Wrap" Text="League Information"/>
+                                <TextBlock x:Name="txtWinsLosses" TextWrapping="Wrap" Text="Wins and Losses"/>
+                                <TextBlock x:Name="txtKdaInfo1" TextWrapping="Wrap" Text="Kills Deaths Assists"/>
+                            </StackPanel>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="Game">
+                        <Grid>
+                            <Grid.Background>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="Blue" Offset="0"/>
+                                    <GradientStop Color="Red" Offset="1"/>
+                                    <GradientStop Color="#FF1EFF1E" Offset="0.4"/>
+                                    <GradientStop Color="White" Offset="0.5"/>
+                                    <GradientStop Color="#FF45D018" Offset="0.6"/>
+                                </LinearGradientBrush>
+                            </Grid.Background>
+
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="Debug">
+                            <Grid Height="236" Width="341">
+                                <TextBox x:Name="txtDebug" Margin="10,10,10,50"/>
+                                <Button x:Name="btnClear" Content="Clear" Margin="0,0,77,4" HorizontalAlignment="Right" Width="62" Height="20" VerticalAlignment="Bottom" Click="btnClear_Click"/>
+                                <Button x:Name="btnSave" Content="Save" Margin="0,0,10,4" HorizontalAlignment="Right" Width="62" Height="20" VerticalAlignment="Bottom"/>
+                            </Grid>
+                    </TabItem>
+                    <Grid Height="100" Width="100"/>
+                </TabControl>
+                <TextBlock x:Name="txtResultsFor" Margin="20,0" Text="Search for a summoner" Foreground="Black" FontSize="18.667" Height="28" LineHeight="48" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Top" FontWeight="Bold" TextTrimming="CharacterEllipsis" TextOptions.TextHintingMode="Fixed" TextOptions.TextFormattingMode="Display" FontStretch="UltraExpanded"/>
+            </Grid>
+            <TextBlock x:Name="btnPreviousResult" HorizontalAlignment="Left" Margin="0,71,0,0" TextWrapping="Wrap" Text="&lt;" VerticalAlignment="Top" Width="20" Height="20" FontSize="17.333" FontFamily="Verdana" MouseUp="btnPreviousResult_MouseUp" ToolTip="Previous summoner" Cursor="Hand" MouseEnter="btnPreviousResult_MouseEnter" MouseLeave="btnPreviousResult_MouseLeave"/>
+            <TextBlock x:Name="btnNextResult" Margin="0,71,0,0" TextWrapping="Wrap" Text="&gt;" VerticalAlignment="Top" Height="20" FontSize="17.333" FontFamily="Verdana" MouseUp="btnNextResult_MouseUp" TextAlignment="Right" Focusable="True" ToolTip="Next summoner" SnapsToDevicePixels="True" Cursor="Hand" HorizontalAlignment="Right" Width="20" TextOptions.TextHintingMode="Fixed" MouseEnter="btnNextResult_MouseEnter" MouseLeave="btnNextResult_MouseLeave"/>
+            <Label x:Name="lblGettingData" Content="Downloading data..." Margin="20,42,21,0" VerticalAlignment="Top" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Center" Visibility="Hidden"/>
+        </Grid>
+
+    </Grid>
+</Page>

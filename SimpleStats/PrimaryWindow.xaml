@@ -1,0 +1,44 @@
+﻿<Window x:Class="SimpleStats.PrimaryWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:local="clr-namespace:SimpleStats"
+        mc:Ignorable="d"
+        Title="PrimaryWindow" Height="552" Width="649" Style="{Binding /Themes/ExpressionDark.xaml, RelativeSource={RelativeSource PreviousData}}" Background="White">
+
+    <Grid>
+
+        <Frame x:Name="frame" Content="Frame" Margin="10,40,10,10" NavigationUIVisibility="Hidden" Source="/SimpleStats;component/Pages/Lookup.xaml"/>
+        <Grid Height="30" VerticalAlignment="Top">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF007BF5"/>
+                    <GradientStop Color="#FFDCD3D3" Offset="1"/>
+                    <GradientStop Color="#FFEAEAEA" Offset="0.686"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Label x:Name="lblHome" Content="Main" HorizontalAlignment="Left" Width="50" HorizontalContentAlignment="Center" Background="{x:Null}" MouseEnter="lblHome_MouseEnter" MouseLeave="lblHome_MouseLeave" Cursor="Hand" MouseUp="lblHome_MouseUp" Margin="0,2,0,7" Padding="2" FontWeight="Medium"/>
+            <Separator HorizontalAlignment="Left" Margin="39,10,0,15" Width="24" RenderTransformOrigin="0.5,0.5">
+                <Separator.RenderTransform>
+                    <TransformGroup>
+                        <RotateTransform Angle="90"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Separator.RenderTransform>
+            </Separator>
+            <Label x:Name="lblLookup" Content="Lookup" HorizontalAlignment="Left" Margin="52,2,0,7" Width="48" HorizontalContentAlignment="Center" MouseEnter="lblLookup_MouseEnter" MouseLeave="lblLookup_MouseLeave" Cursor="Hand" Padding="2" FontWeight="Medium" MouseUp="lblLookup_MouseUp"/>
+            <Separator HorizontalAlignment="Left" Margin="89,10,0,15" Width="24" RenderTransformOrigin="0.5,0.5">
+                <Separator.RenderTransform>
+                    <TransformGroup>
+                        <RotateTransform Angle="90"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Separator.RenderTransform>
+            </Separator>
+            <Label x:Name="lblSettings" Content="Settings" HorizontalAlignment="Left" Margin="102,2,0,7" Width="54" HorizontalContentAlignment="Center"  MouseEnter="lblSettings_MouseEnter" MouseLeave="lblSettings_MouseLeave" Cursor="Hand" TextOptions.TextHintingMode="Fixed" FontWeight="Medium" FontStretch="Condensed" ScrollViewer.VerticalScrollBarVisibility="Disabled" Padding="2" MouseUp="lblSettings_MouseUp"/>
+        </Grid>
+
+    </Grid>
+</Window>
